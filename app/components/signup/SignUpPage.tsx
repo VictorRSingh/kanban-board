@@ -12,6 +12,7 @@ export default function SignUp() {
     const router = useRouter();
 
     const [email, setEmail] = useState<string>("");
+    const [username, setUsername] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [password2, setPassword2] = useState<string>("");
 
@@ -25,10 +26,18 @@ export default function SignUp() {
             return
         }
 
+        if(!username) {
+          toast.error("Please enter a username");
+          return
+        }
+
         const { data, error } = await supabase.auth.signUp({
             email: email,
             password: password,
             options: {
+              data: {
+                username: username
+              },
               emailRedirectTo: `${window.location.origin}/auth/callback`
             }
         });
@@ -49,6 +58,7 @@ export default function SignUp() {
       <div className="border p-4 rounded gap-y-4 flex flex-col w-full md:max-w-sm">
         <h1 className="text-2xl font-bold">Sign Up</h1>
         <TextInput label="Email" value={email} onChange={(e) => setEmail(e.target.value)} type="email" />
+        <TextInput label="Username" value={username} onChange={(e) => setUsername(e.target.value)} type="text" />
         <TextInput label="Password" value={password} onChange={(e) => setPassword(e.target.value)} type="password" />
         <TextInput label="Confirm Password" value={password2} onChange={(e) => setPassword2(e.target.value)} type="password" />
         <SubmitButton label="Sign Up" onClick={handleSignUp} />
