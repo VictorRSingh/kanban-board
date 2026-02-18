@@ -1,12 +1,14 @@
 
 export type Project = {
-    id: string;
-    owner: string;
-    title: string;
-    visibility: PROJECT_VISIBILITY;
+    id?: string;
+    ownerId: string;
+    name: string;
+    description: string;
+    created_at: string;
+    // visibility: PROJECT_VISIBILITY;
 }
 
-enum PROJECT_VISIBILITY {
-    PUBLIC,
-    PRIVATE
-}
+// enum PROJECT_VISIBILITY {
+//     PUBLIC,
+//     PRIVATE
+// }

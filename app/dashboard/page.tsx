@@ -15,7 +15,7 @@ export default function DashboardPage() {
     loadUser()
   }, []);
 
-  return <div className="">
+  return <>
     <ProjectsView />
-  </div>;
+  </>;
 }

@@ -1,24 +1,5 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import Navbar from "../components/navbar/Navbar";
 import "../globals.css";
-import { Toaster } from "react-hot-toast";
-import { supabase } from "@/lib/supabaseClient";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export const metadata: Metadata = {
-  title: `Kanban Board`,
-  description: "Kanban board app created by Victor Singh",
-};
-
 
 export default function RootLayout({
   children,
@@ -26,13 +7,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <Toaster />
-        {children}
-      </body>
-    </html>
+    <main className="flex flex-col min-h-screen max-h-screen w-full lg:max-w-[85%] mx-auto">
+      <div className="flex">
+        <Navbar />
+      </div>
+      <div className="flex grow w-full">{children}</div>
+    </main>
   );
 }
