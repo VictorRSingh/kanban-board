@@ -53,7 +53,7 @@ export default function LoginPage() {
           onChange={(e) => setPassword(e.target.value)}
           type="password"
         />
-        <SubmitButton label="Login" onClick={handleLogin} />
+        <SubmitButton label="Login" onClick={handleLogin} textColor="text-white" />
       </div>
       <button
         className="text-blue-500 italic cursor-pointer"

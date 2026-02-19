@@ -32,7 +32,7 @@ export default function ProjectsView() {
     setProjects((prev) => [newProject, ...prev]);
   }
 
-  if (loading) return <p>Fetching Projects...</p>;
+  if (loading) return <p className="flex w-full min-h-screen items-center justify-center">Fetching Projects...</p>;
 
 
   return (

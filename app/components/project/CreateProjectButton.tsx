@@ -81,17 +81,7 @@ export default function CreateProjectButton({
         Create Project
       </button>
 
-      <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
-        <div className="space-y-4">
-          <div className="flex w-full justify-between text-2xl font-semibold items-center">
-            <h1 className="">Create Project</h1>
-            <p
-              className="cursor-pointer border rounded-full py-1 px-3 hover:bg-black hover:text-white transition"
-              onClick={() => setIsOpen(false)}
-            >
-              X
-            </p>
-          </div>
+      <Modal title="Create Project" isOpen={isOpen} setIsOpen={setIsOpen}>
           <TextInput
             label="Project name"
             value={projectName}
@@ -109,7 +99,6 @@ export default function CreateProjectButton({
             textColor="text-white"
             onClick={handleCreateProject}
           />
-        </div>
       </Modal>
     </div>
   );
