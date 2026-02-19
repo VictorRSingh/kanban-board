@@ -7,6 +7,12 @@ type ProjectMapperProps = {
 
 export default function ProjectMapper({ projects }: ProjectMapperProps) {
   const router = useRouter();
+
+  if (projects.length === 0) {
+    return (
+      <div className="flex w-full min-h-96 justify-center items-center">No Projects Found</div>
+    )
+  }
   return (
     <div className="grid grid-cols-3 gap-4">
       {projects.map((project: Project, index: number) => (
