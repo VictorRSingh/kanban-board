@@ -4,6 +4,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { Project } from "@/types/Project";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import ColumnMapper from "../column/ColumnMapper";
 
 type ProjectPageProps = {
   id: string;
@@ -39,9 +40,10 @@ export default function ProjectPage({ id }: ProjectPageProps) {
 
   return (
     <>
-      {project && (
-        <div className="">
-          <h1>{project.name}</h1>
+      {project && project.id && (
+        <div className="flex flex-col p-2 w-full space-y-12 h-full">
+          <h1 className="text-2xl font-semibold w-full">{project.name}</h1>
+          <ColumnMapper project_id={project.id}/>
         </div>
       )}
     </>
