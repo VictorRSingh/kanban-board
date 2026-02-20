@@ -36,8 +36,8 @@ export default function ProjectsView() {
 
 
   return (
-    <div className="flex flex-col p-2 w-full space-y-12">
-      <h1 className="text-2xl font-semibold w-full">Projects Overview</h1>
+    <div className="flex flex-col p-2 w-full space-y-4">
+      <h1 className="text-2xl font-semibold w-full mt-4">Projects Overview</h1>
       <CreateProjectButton onProjectCreated={handleProjectsCreated}/>
       <ProjectMapper projects={projects} />
     </div>

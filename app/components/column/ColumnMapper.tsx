@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import ColumnDesktopView from "./ColumnDesktopView";
 import ColumnMobileView from "./ColumnMobileView";
+import CreateColumnButton from "./CreateColumnButton";
 
 type ColumnMapperProps = {
   project_id: string;
@@ -39,12 +40,20 @@ export default function ColumnMapper({ project_id }: ColumnMapperProps) {
 
   console.log(columns);
 
+  const onColumnCreated = async (newColumn: Column) => {
+    setColumns((prev) => [...prev, newColumn]);
+  };
+
   if (isLoading) {
     return <div className="">Fetching Columns</div>;
   }
 
   return (
-    <div className="h-full w-full flex flex-col">
+    <div className="w-full flex flex-col flex-1 space-y-4">
+      <CreateColumnButton
+        project_id={project_id}
+        onColumnCreated={onColumnCreated}
+      />
       <ColumnDesktopView columns={columns} />
       <ColumnMobileView columns={columns} />
     </div>

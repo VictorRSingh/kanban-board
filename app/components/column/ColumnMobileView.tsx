@@ -11,32 +11,27 @@ export default function ColumnMobileView({ columns }: ColumnMobileViewProps) {
   );
 
   return (
-    <div className="">
-      <div className="flex md:hidden overflow-x-auto border mb-2">
-        {columns.map((column: Column) => (
-          <button
-            key={column.id}
-            className={`px-3 py-1 font-medium border ${
-              activeColumn === column.id
-                ? "border border-blue-500 text-blue-500"
-                : "text-gray-600"
-            }`}
-            onClick={() => setActiveColumn(column.id!)}
-          >
-            {column.name}
-          </button>
-        ))}
-      </div>
-      <div className="md:hidden h-full">
-        {columns
-          .filter((col) => col.id === activeColumn)
-          .map((col) => (
-            <div key={col.id} className="bg-gray-600 p-4 rounded">
-              <h3 className="font-bold mb-2">{col.name}</h3>
-              {/* tasks go here */}
+    <>
+      <div className="flex flex-col lg:hidden bg-gray-600 flex-1">
+        {/* Tabs */}
+        <div className="w-full flex max-w-full overflow-x-auto">
+          {columns.map((column: Column) => (
+            <div
+              key={column.id}
+              className={`w-full flex items-center justify-center text-center cursor-pointer border ${
+                activeColumn === column.id && "bg-blue-600 font-bold"
+              }`}
+              onClick={() => setActiveColumn(column.id!)}
+            >
+              <h1>{column.name}</h1>
             </div>
           ))}
+        </div>
+        {/* Column Data */}
+        <div className="w-full flex-1 h-full overflow-auto flex p-4 relative">
+          <div className="absolute bottom-0 right-0 p-4">Create Item</div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

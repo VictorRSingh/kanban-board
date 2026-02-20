@@ -9,8 +9,8 @@ export default async function ProjectPage({
 
 
   return (
-    <div className="">
+    <>
         <ProjectView id={id} />
-    </div>
+    </>
   )
 }
